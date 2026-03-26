@@ -41,9 +41,9 @@ class CausalInference:
 
     >>> from pgmpy.inference.CausalInference import CausalInference
     >>> inference = CausalInference(game)
-    >>> inference.get_all_backdoor_adjustment_sets(X="X", Y="Y")
+    >>> inference.get_all_backdoor_adjustment_sets(X="X", Y="Y")  # doctest: +ELLIPSIS
     frozenset()
-    >>> inference.get_all_frontdoor_adjustment_sets(X="X", Y="Y")
+    >>> inference.get_all_frontdoor_adjustment_sets(X="X", Y="Y")  # doctest: +ELLIPSIS
     frozenset({frozenset({'A'})})
 
     References
@@ -164,7 +164,7 @@ class CausalInference:
         --------
         >>> game1 = DiscreteBayesianNetwork([("X", "A"), ("A", "Y"), ("A", "B")])
         >>> inference = CausalInference(game1)
-        >>> inference.get_all_backdoor_adjustment_sets("X", "Y")
+        >>> inference.get_all_backdoor_adjustment_sets("X", "Y")  # doctest: +ELLIPSIS
         frozenset()
         """
         warnings.warn(
@@ -1083,3 +1083,8 @@ class CausalInference:
                 pbar.update(1)
 
         return sum(values).normalize(inplace=False)
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
